@@ -75,15 +75,14 @@ function App() {
           <img src={perfil} alt={name} onClick={GetImg}/>
           <input type='file' accept="image/*" class='file'/>
           </div>
-          <div className=''> 
-            <h1>Seu nome e:</h1>
-            <h2>{name}</h2>
+          <div class='center-name'> 
+            <h2 className='editor-name'>{name}</h2>
           </div>
           <input class='Text-SetName' type='text' onChange={(event) => {setName(event.target.value)}}/>
           </div> : <> </>}
         </div> 
       <ul className='mens'>
-        { db.length > -1 ?
+        {
           db.map((db) => (
           <li key={db.id}>
           <div className='perfil' data-anime='left'>
@@ -92,7 +91,7 @@ function App() {
           </div>
           <p data-anime='left'>{db.mensagem}</p>
           </li> 
-        )) : <> </>} 
+        ))} 
       </ul>
       <div className='Enviar'>
       <input className='Text-input' type='text' itemID='teste'

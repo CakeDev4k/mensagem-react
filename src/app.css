@@ -122,3 +122,51 @@ p{
 .file{
     display: none;
 }
+
+@media (max-width: 400px) {
+    body{
+        overflow: hidden;
+    }
+
+    .Editor{
+        height: 92vh;
+        min-width: 95vw;
+        left: 10px;
+        z-index: 1;
+    }
+
+    .Editor img{
+    border-radius: 50%;
+    height: 70%;
+    width: 70%;
+    transition: all .3s;
+    }
+
+    .Text-SetName{
+        width: 90%;
+    }
+
+    .center-name{
+        display: flex;
+        justify-content: center;
+    }
+
+    .editor-name{
+        font-size: 40px;
+    }
+
+    .Text-input{
+        width: 65%;
+    }
+
+    .Enviar{
+        height: 50px;
+        width: 115vw;
+        bottom: 0px;
+    }
+
+    .mens{
+        width: 100vw;
+        height: 100vh
+    }
+}
