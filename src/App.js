@@ -1,17 +1,36 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import './app.css'
 
 function App() {
   const database = []
 
-  const [db,setDB] = useState(database)
+  let [db,setDB] = useState(database)
   let [mens,setMens] = useState('')
   const [name,setName] = useState('Susie')
   const [editor,setEditor] = useState(false)
   const [perfil,setPerfil] = useState('susie.png')
 
-
   let text = document.getElementsByClassName('Text-input')
+
+  useEffect(() => {
+    function getData() {
+      const GetMensagensDb = localStorage.getItem('Mensagens')
+
+      if (!GetMensagensDb) {
+        return localStorage.setItem('Mensagens', '[]')
+      }
+
+      const RenderMensagens = JSON.parse(GetMensagensDb)
+
+      setDB(RenderMensagens)
+    }
+
+    getData()
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('Mensagens', JSON.stringify(db))
+  }, [db])
 
   function EnviarMens(){
     
@@ -61,7 +80,13 @@ function App() {
     if (even.keyCode===13)
     {
       EnviarMens()
-      console.log('foi')
+    }
+  }
+
+  function enter_editor(even){
+    if (even.keyCode===13)
+    {
+      setEditor(!editor)
     }
   }
 
@@ -78,7 +103,8 @@ function App() {
           <div class='center-name'> 
             <h2 className='editor-name'>{name}</h2>
           </div>
-          <input class='Text-SetName' type='text' onChange={(event) => {setName(event.target.value)}}/>
+          <input class='Text-SetName' type='text' value={name} onKeyUp={(even) => enter_editor(even)} onChange={(event) => {setName(event.target.value)}}/>
+          <input type='button' value='reset' onClick={() => {setDB(db = [])}}/>
           </div> : <> </>}
         </div> 
       <ul className='mens'>
@@ -89,7 +115,7 @@ function App() {
           <img className='PerfilImg' src={db.perfil} alt={db.name}/>
           <h1>{db.name}</h1>
           </div>
-          <p data-anime='left'>{db.mensagem}</p>
+          <p class='text-mensagem' data-anime='left'>{db.mensagem}</p>
           </li> 
         ))} 
       </ul>

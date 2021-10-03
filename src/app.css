@@ -19,6 +19,11 @@ body{
     max-height: 80vh;
     list-style: none;
     overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.text-mensagem{
+    max-width: 500px
 }
 
 .mens::-webkit-scrollbar{
@@ -42,7 +47,6 @@ p{
 
 .perfil{
     display: flex;
-
 }
 
 .Enviar{
@@ -100,6 +104,7 @@ p{
     left: 20px;
     padding: 10px;
     color: steelblue;
+    overflow-x: hidden;
 }
 
 .img-editor{
@@ -123,25 +128,50 @@ p{
     display: none;
 }
 
-@media (max-width: 400px) {
-    body{
-        overflow: hidden;
-    }
-
+@media (max-width: 700px) {
     .Editor{
-        height: 92vh;
+        top: 4px;
+        height: 96vh;
         min-width: 95vw;
         left: 10px;
         z-index: 1;
     }
-
     .Editor img{
     border-radius: 50%;
     height: 70%;
     width: 70%;
     transition: all .3s;
     }
+    .Text-SetName{
+        width: 90%;
+    }
 
+    .center-name{
+        display: flex;
+        justify-content: center;
+    }
+
+    .editor-name{
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    body{
+        overflow: hidden;
+    }
+    .Editor{
+        height: 92vh;
+        min-width: 95vw;
+        left: 10px;
+        z-index: 1;
+    }
+    .Editor img{
+    border-radius: 50%;
+    height: 70%;
+    width: 70%;
+    transition: all .3s;
+    }
     .Text-SetName{
         width: 90%;
     }
