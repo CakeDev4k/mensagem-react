@@ -3,6 +3,7 @@ body{
     background-color: #20202b;
     color: whitesmoke;
     margin-bottom: 50px;
+    overflow: hidden;
 }
 
 .App{
@@ -14,10 +15,19 @@ body{
 }
 
 .mens{
-    width: 300px;
-    height: 80vh;
+    width: 500px;
+    max-height: 80vh;
     list-style: none;
-    
+    overflow-y: auto;
+}
+
+.mens::-webkit-scrollbar{
+    width: 12px;
+}
+
+.mens::-webkit-scrollbar-thumb{
+    background-color: #a7ffb6;
+    border-radius: 6px;
 }
 
 h1{
@@ -44,6 +54,13 @@ p{
     height: 40px;
     width: 100vw;
     background-color: #4d6a86;
+}
+
+.Enviar-mens{
+    background-color: aquamarine;
+    margin-left: 5px;
+    border: 2px #159b20 solid;
+    border-radius: 3px;
 }
 
 .Text-input{
@@ -78,6 +95,7 @@ p{
 .Editor{
     background-color: #a7ffb6;
     border-radius: 20px;
+    max-width: 250px;
     position: absolute;
     left: 20px;
     padding: 10px;

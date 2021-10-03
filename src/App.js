@@ -2,12 +2,10 @@ import {useState} from 'react'
 import './app.css'
 
 function App() {
-  const database = [
-    {},
-]
+  const database = []
 
   const [db,setDB] = useState(database)
-  const [mens,setMens] = useState('')
+  let [mens,setMens] = useState('')
   const [name,setName] = useState('Susie')
   const [editor,setEditor] = useState(false)
   const [perfil,setPerfil] = useState('susie.png')
@@ -21,6 +19,10 @@ function App() {
       return alert('digite algo no input por favor')
     }
 
+    if (name === ''){
+      return alert('digite o seu nome')
+    }
+
     const id = Math.floor(Math.random() * 10000)
 
     setDB([...db,{
@@ -31,6 +33,7 @@ function App() {
     }])
 
     text[0].value = "";
+    setMens(mens = "")
   }
 
   function GetImg(){
@@ -54,6 +57,14 @@ function App() {
     })
   }
 
+  function enter(even){
+    if (even.keyCode===13)
+    {
+      EnviarMens()
+      console.log('foi')
+    }
+  }
+
   return (
     <div className="App">
       <div className='Editor-perfil'>
@@ -64,7 +75,7 @@ function App() {
           <img src={perfil} alt={name} onClick={GetImg}/>
           <input type='file' accept="image/*" class='file'/>
           </div>
-          <div>
+          <div className=''> 
             <h1>Seu nome e:</h1>
             <h2>{name}</h2>
           </div>
@@ -72,20 +83,21 @@ function App() {
           </div> : <> </>}
         </div> 
       <ul className='mens'>
-        {
+        { db.length > -1 ?
           db.map((db) => (
-          <li key={db.id} onChange={console.log(db.id)}>
+          <li key={db.id}>
           <div className='perfil' data-anime='left'>
           <img className='PerfilImg' src={db.perfil} alt={db.name}/>
           <h1>{db.name}</h1>
           </div>
           <p data-anime='left'>{db.mensagem}</p>
           </li> 
-        ))} 
+        )) : <> </>} 
       </ul>
       <div className='Enviar'>
-      <input class='Text-input' type='text' onChange={(event) => {setMens(event.target.value)}}></input>
-      <input type='button' value='Enviar' onClick={EnviarMens}></input>
+      <input className='Text-input' type='text' itemID='teste'
+      onChange={(event) => {setMens(event.target.value)}} onKeyUp={(even) => {enter(even)}} />
+      <input type='button' value='Enviar' className='Enviar-mens' onClick={EnviarMens}></input>
       </div>
       <div></div>
     </div>
