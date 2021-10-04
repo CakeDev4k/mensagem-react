@@ -99,12 +99,32 @@ p{
 .Editor{
     background-color: #a7ffb6;
     border-radius: 20px;
-    max-width: 250px;
+    max-width: 300px;
+    min-width: 250px;
     position: absolute;
+    top: 20px;
     left: 20px;
     padding: 10px;
     color: steelblue;
     overflow-x: hidden;
+}
+
+.Editar{
+    position: absolute;
+    width: 90px;
+    top: 40px;
+    background: linear-gradient(#029292, #029292);
+    border: #2eaf88 solid 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 10px;
+    color: #4bcca5;
+    transition: ease all .5s;
+}
+
+.Editar:hover{
+    width: 120px;
 }
 
 .img-editor{
@@ -124,35 +144,157 @@ p{
     cursor: pointer;
 }
 
+.center-name{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.buttons-editor{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    
+}
+
+.buttons-editor input{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 40%;
+    height: 70px;
+    background: linear-gradient(#029292, #029292);
+    border: #04815c solid 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    border-radius: 10px;
+    color: #62eec4;
+    transition: ease all .5s;
+}
+
+.buttons-editor input:hover{
+    background: linear-gradient(#029292, #00acac);
+    cursor: pointer;
+    color: #53e4b8;
+    width: 45%;
+}
+
+.buttons-editor input:nth-child(2){
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 40%;
+    height: 70px;
+    background: linear-gradient(#ac0b00,#ac0b00);
+    border: #ec3030 solid 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    border-radius: 10px;
+    color: #f86c42;
+    transition: all .5s ease;
+}
+
+.buttons-editor input:nth-child(2):hover{
+    background: linear-gradient(#ac0b00, #b6251a);
+    cursor: pointer;
+    color: #ff9777;
+    width: 45%;
+}
+
+.Text-SetName{
+    width: 100%;
+}
+
 .file{
     display: none;
 }
 
 @media (max-width: 700px) {
+    .Editor-perfil{
+        display: flex;
+        align-items: center;
+    }
+
     .Editor{
-        top: 4px;
-        height: 96vh;
+        bottom: 6px;
+        height: 90vh;
         min-width: 95vw;
         left: 10px;
         z-index: 1;
+        display: block;
     }
     .Editor img{
     border-radius: 50%;
-    height: 70%;
-    width: 70%;
+    height: 50%;
+    width: 50%;
     transition: all .3s;
     }
     .Text-SetName{
-        width: 90%;
+        width: 60%;
     }
 
     .center-name{
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
     }
+
+    .buttons-editor{
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .buttons-editor input{
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 40%;
+        height: 70px;
+        background: linear-gradient(#029292, #029292);
+        border: #04815c solid 2px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+        border-radius: 10px;
+        color: #62eec4;
+        transition: ease all .5s;
+    }
+
+    .buttons-editor input:hover{
+        background: linear-gradient(#029292, #00acac);
+        cursor: pointer;
+        color: #53e4b8;
+        width: 45%;
+    }
+
+    .buttons-editor input:nth-child(2){
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 40%;
+        height: 70px;
+        background: linear-gradient(#ac0b00,#ac0b00);
+        border: #ec3030 solid 2px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+        border-radius: 10px;
+        color: #f86c42;
+        transition: all .5s ease;
+    }
+
+    .buttons-editor input:nth-child(2):hover{
+        background: linear-gradient(#ac0b00, #b6251a);
+        cursor: pointer;
+        color: #ff9777;
+        width: 45%;
+    }
+
 
     .editor-name{
         font-size: 40px;
+        margin-bottom: 0px;
     }
 }
 
@@ -183,6 +325,63 @@ p{
 
     .editor-name{
         font-size: 40px;
+    }
+
+    .center-name{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .buttons-editor{
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .buttons-editor input{
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 40%;
+        height: 70px;
+        background: linear-gradient(#029292, #029292);
+        border: #04815c solid 2px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+        border-radius: 10px;
+        color: #62eec4;
+        transition: ease all .5s;
+    }
+
+    .buttons-editor input:hover{
+        background: linear-gradient(#029292, #00acac);
+        cursor: pointer;
+        color: #53e4b8;
+        width: 45%;
+    }
+
+    .buttons-editor input:nth-child(2){
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 40%;
+        height: 70px;
+        background: linear-gradient(#ac0b00,#ac0b00);
+        border: #ec3030 solid 2px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+        border-radius: 10px;
+        color: #f86c42;
+        transition: all .5s ease;
+    }
+
+    .buttons-editor input:nth-child(2):hover{
+        background: linear-gradient(#ac0b00, #b6251a);
+        cursor: pointer;
+        color: #ff9777;
+        width: 45%;
     }
 
     .Text-input{

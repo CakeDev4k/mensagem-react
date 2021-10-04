@@ -15,14 +15,27 @@ function App() {
   useEffect(() => {
     function getData() {
       const GetMensagensDb = localStorage.getItem('Mensagens')
+      const GetPerfilDb = localStorage.getItem('Perfil')
+      const GetNameDb = localStorage.getItem('Name')
 
       if (!GetMensagensDb) {
         return localStorage.setItem('Mensagens', '[]')
       }
+      if (!GetPerfilDb) {
+        return localStorage.setItem('Perfil', '')
+      }
+      if (!GetNameDb) {
+        return localStorage.setItem('Name', '')
+      }
+      
 
       const RenderMensagens = JSON.parse(GetMensagensDb)
+      const RenderPerfil = JSON.parse(GetPerfilDb)
+      const RenderName = JSON.parse(GetNameDb)
 
       setDB(RenderMensagens)
+      setPerfil(RenderPerfil)
+      setName(RenderName)
     }
 
     getData()
@@ -31,6 +44,14 @@ function App() {
   useEffect(() => {
     localStorage.setItem('Mensagens', JSON.stringify(db))
   }, [db])
+
+  useEffect(() => {
+    localStorage.setItem('Perfil', JSON.stringify(perfil))
+  }, [perfil])
+
+  useEffect(() => {
+    localStorage.setItem('Name', JSON.stringify(name))
+  }, [name])
 
   function EnviarMens(){
     
@@ -93,18 +114,24 @@ function App() {
   return (
     <div className="App">
       <div className='Editor-perfil'>
-        <input type='button' value='Editar' onClick={() => setEditor(!editor)}/>
+        <input type='button' value='Editar' className='Editar' onClick={() => setEditor(!editor)}/>
         { editor ?
         <div className='Editor' id='oi' data-anime='left'>
           <div className='img-editor'>
           <img src={perfil} alt={name} onClick={GetImg}/>
-          <input type='file' accept="image/*" class='file'/>
+          <input type='file' accept="image/*" className='file'/>
           </div>
-          <div class='center-name'> 
+          <div className='center-name'> 
             <h2 className='editor-name'>{name}</h2>
+          <input className='Text-SetName' type='text' value={name} onKeyUp={(even) => enter_editor(even)} onChange={(event) => {setName(event.target.value)}}/>
           </div>
-          <input class='Text-SetName' type='text' value={name} onKeyUp={(even) => enter_editor(even)} onChange={(event) => {setName(event.target.value)}}/>
-          <input type='button' value='reset' onClick={() => {setDB(db = [])}}/>
+          <div className='buttons-editor'>
+          <input type='button' value='Reset' onClick={() => {
+            setDB(db = []);
+            setEditor(!editor)
+            }}/>
+          <input type='button' value='Sair' onClick={() => {setEditor(!editor)}}/>
+          </div>
           </div> : <> </>}
         </div> 
       <ul className='mens'>
@@ -115,7 +142,7 @@ function App() {
           <img className='PerfilImg' src={db.perfil} alt={db.name}/>
           <h1>{db.name}</h1>
           </div>
-          <p class='text-mensagem' data-anime='left'>{db.mensagem}</p>
+          <p className='text-mensagem' data-anime='left'>{db.mensagem}</p>
           </li> 
         ))} 
       </ul>
